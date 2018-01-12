@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Spending</title>
+</head>
+<body>
+{% extends 'includes/layout.html' %}
+{% block body %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+	  <div class="mb-0 mt-4">
+		<i class="fa fa-usd">  My Balance for DBS xxx-xxxx-xxx</i>
+	  </div>
+	  <hr class="mt-2">
+	  <div class="card-group">
+		<div class="card mb-3">
+		<div class="card-header">Withdrawls</div>
+		<div class="card-body">
+			<div class="h4 mb-0 text-danger">$47.75</div>
+		</div>
+		</div>
+
+		<div class="card mb-3">
+			<div class="card-header">Deposits</div>
+			<div class="card-body">
+				<div class="h4 mb-0 text-success">$0.28</div>
+			</div>
+		</div>
+
+		<div class="card mb-3">
+			<div class="card-header">Balance</div>
+			<div class="card-body">
+				<div class="h4 mb-0 text-primary">$252.53</div>
+			</div>
+		</div>
+
+	  </div>
+
+	  <!--Data Table-->
+	  <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> My Transactions</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Transactions date</th>
+                  <th>Description</th>
+                  <th>Withdrawal (SGD)</th>
+                  <th>Deposits (SGD) </th>
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Transactions date</th>
+                  <th>Description</th>
+                  <th>Withdrawal (SGD)</th>
+                  <th>Deposits (SGD)</th>
+
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr>
+                  <td>06/12/2017</td>
+                  <td>Cash Withdrawal</td>
+                  <td>40.00</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>03/12/2017</td>
+                  <td>Transfer to Kai</td>
+                  <td>2.75</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>02/12/2017</td>
+                  <td>McDonald's @ AMK</td>
+                  <td>5.00</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>30/11/2017</td>
+                  <td>Interest Credit</td>
+                  <td>-</td>
+                  <td>0.28</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8">
+
+          <!-- Example Bar Chart Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-bar-chart"></i> Your money out per month</div>
+            <div class="card-body">
+              <canvas id="myBarChart" width="100" height="50"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <!-- Example Pie Chart Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Your spending by category</div>
+            <div class="card-body">
+              <canvas id="myPieChart" width="100%" height="113"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <p>Maximum spending amount: $<span>500</span></p>
+	  <button type="button" class='btn btn-primary' data-toggle="modal" data-target="#LimitModal">Limit your Spending</button>
+    </div>
+	<!--Limit spending modal-->
+	<div class="modal fade" id="LimitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="LimitModalLabel">Limit Your Spending</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				</div>
+				<div class="modal-body"><label for='inputlg'>Input the amount you want to limit.</label>
+				<input class = 'form-control input-lg' id = 'inputlg' type='text' placeholder = 'Amount'/>
+				</div>
+				<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-primary" href="spending.html">Confirm</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="/static/vendor/chart.js/Chart.min.js"></script>
+    <script src="/static/js/sb-admin-charts.js"></script>
+
+</div>
+{% endblock %}
+
+</body>
+</html>
